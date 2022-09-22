@@ -1,0 +1,40 @@
+Index: zeromq3-4.3.3/tests/testutil.cpp
+===================================================================
+--- zeromq3-4.3.3.orig/tests/testutil.cpp
++++ zeromq3-4.3.3/tests/testutil.cpp
+@@ -480,10 +480,14 @@ fd_t bind_socket_resolve_port (const cha
+         TEST_ASSERT_SUCCESS_RAW_ERRNO (_mkdir (buffer));
+         strcat (buffer, "/ipc");
+ #else
+-        char buffer[PATH_MAX] = "";
+-        strcpy (buffer, "tmpXXXXXX");
++        char *buffer = NULL;
++        size_t len = 10;
++        buffer = (char*) malloc(len);
++        strncpy (buffer, "tmpXXXXXX", len);
+ #ifdef HAVE_MKDTEMP
+         TEST_ASSERT_TRUE (mkdtemp (buffer));
++        len += 7;
++        buffer = (char *)realloc (buffer, len);
+         strcat (buffer, "/socket");
+ #else
+         int fd = mkstemp (buffer);
+@@ -491,12 +495,17 @@ fd_t bind_socket_resolve_port (const cha
+         close (fd);
+ #endif
+ #endif
++        len += strlen((*(struct sockaddr_un *) &addr).sun_path);
++        buffer = (char *)realloc (buffer, len);
+         strcpy ((*(struct sockaddr_un *) &addr).sun_path, buffer);
+         memcpy (my_endpoint_, "ipc://", 7);
+-        strcat (my_endpoint_, buffer);
++        len += strlen(my_endpoint_);
++        buffer = (char *)realloc (buffer, len);
++        strncat (my_endpoint_, buffer, len);
+ 
+         // TODO check return value of unlink
+         unlink (buffer);
++        free (buffer);
+ #else
+         return retired_fd;
+ #endif

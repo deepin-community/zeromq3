@@ -1,0 +1,49 @@
+Source: zeromq3
+Section: libs
+Priority: optional
+Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Build-Depends: debhelper-compat (= 11),
+ libpgm-dev (>= 5.2.122~dfsg),
+ libsodium-dev,
+ libnorm-dev,
+ libkrb5-dev,
+ libbsd-dev,
+ pkg-config,
+ xmlto,
+ asciidoc
+Standards-Version: 4.5.0
+Homepage: https://www.zeromq.org/
+Rules-Requires-Root: no
+
+Package: libzmq5
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: lightweight messaging kernel (shared library)
+ ØMQ is a library which extends the standard socket interfaces with features
+ traditionally provided by specialised messaging middleware products.
+ .
+ ØMQ sockets provide an abstraction of asynchronous message queues, multiple
+ messaging patterns, message filtering (subscriptions), seamless access to
+ multiple transport protocols and more.
+ .
+ This package contains the libzmq shared library.
+
+Package: libzmq3-dev
+Architecture: any
+Section: libdevel
+Depends: libzmq5 (= ${binary:Version}), ${misc:Depends}, libpgm-dev (>= 5.2.122~dfsg), libsodium-dev, libnorm-dev, libkrb5-dev, libbsd-dev
+Conflicts: libzmq-dev, libzmq5-dev
+Replaces: libzmq5-dev
+Provides: libzmq5-dev
+Multi-Arch: same
+Description: lightweight messaging kernel (development files)
+ ØMQ is a library which extends the standard socket interfaces with features
+ traditionally provided by specialised messaging middleware products.
+ .
+ ØMQ sockets provide an abstraction of asynchronous message queues, multiple
+ messaging patterns, message filtering (subscriptions), seamless access to
+ multiple transport protocols and more.
+ .
+ This package contains the ZeroMQ development libraries and header files.

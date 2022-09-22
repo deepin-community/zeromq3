@@ -1,0 +1,21 @@
+Description: disable test_security_curve
+ It hangs in buildds that not x86/x64 based.
+Author: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Forwarded: no
+Last-Update: 2017-12-13
+
+---
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -649,8 +649,8 @@ tests_test_reconnect_ivl_LDADD = src/lib
+ 
+ if HAVE_CURVE
+ 
+-test_apps += \
+-	tests/test_security_curve
++#test_apps += \
++#	tests/test_security_curve
+ 
+ tests_test_security_curve_SOURCES = \
+ 	tests/test_security_curve.cpp \
