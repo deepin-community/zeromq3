@@ -2,16 +2,16 @@ Source: zeromq3
 Section: libs
 Priority: optional
 Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
-Build-Depends: debhelper-compat (= 11),
+Build-Depends: debhelper-compat (= 13),
  libpgm-dev (>= 5.2.122~dfsg),
  libsodium-dev,
  libnorm-dev,
  libkrb5-dev,
  libbsd-dev,
- pkg-config,
+ pkgconf,
  xmlto,
  asciidoc
-Standards-Version: 4.5.0
+Standards-Version: 4.6.1
 Homepage: https://www.zeromq.org/
 Rules-Requires-Root: no
 
@@ -34,6 +34,7 @@ Package: libzmq3-dev
 Architecture: any
 Section: libdevel
 Depends: libzmq5 (= ${binary:Version}), ${misc:Depends}, libpgm-dev (>= 5.2.122~dfsg), libsodium-dev, libnorm-dev, libkrb5-dev, libbsd-dev
+Recommends: cppzmq-dev
 Conflicts: libzmq-dev, libzmq5-dev
 Replaces: libzmq5-dev
 Provides: libzmq5-dev

@@ -1,8 +1,23 @@
-zeromq3 (4.3.4-2) UNRELEASED; urgency=medium
+zeromq3 (4.3.4.1-deepin1) unstable; urgency=medium
 
-  * update
+  * fix qemu-user build
 
- -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 08 Jun 2022 01:49:57 -0400
+ -- Han Gao <gaohan@iscas.ac.cn>  Sat, 07 Jan 2023 14:57:02 +0800
+
+zeromq3 (4.3.4-4) unstable; urgency=medium
+
+  * Update watch file.
+  * Update debhelper level to 13 .
+  * Update Standards-Version to 4.6.1 .
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 22 Oct 2022 10:41:50 +0200
+
+zeromq3 (4.3.4-3) unstable; urgency=medium
+
+  * Remove zmq{,_addon}.hpp as these provided by cppzmq-dev from now on
+    (closes: #972785).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Mon, 15 Aug 2022 18:40:34 +0200
 
 zeromq3 (4.3.4-2) unstable; urgency=medium
 
