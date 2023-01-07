@@ -1,0 +1,27 @@
+Description: fix qemu-user build
+Author: Han Gao <gaohan@iscas.ac.cn>
+Last-Update: 2023-01-07
+
+--- zeromq3-4.3.4.orig/CMakeLists.txt
++++ zeromq3-4.3.4/CMakeLists.txt
+@@ -470,7 +470,8 @@ execute_process(
+   ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+ if(CACHELINE_SIZE STREQUAL ""
+    OR CACHELINE_SIZE EQUAL 0
+-   OR CACHELINE_SIZE EQUAL -1)
++   OR CACHELINE_SIZE EQUAL -1
++   OR CACHELINE_SIZE EQUAL "undefined")
+   set(ZMQ_CACHELINE_SIZE 64)
+ else()
+   set(ZMQ_CACHELINE_SIZE ${CACHELINE_SIZE})
+--- zeromq3-4.3.4.orig/acinclude.m4
++++ zeromq3-4.3.4/acinclude.m4
+@@ -1207,7 +1207,7 @@ AC_DEFUN([LIBZMQ_CHECK_CACHELINE], [{
+     AC_CHECK_TOOL(libzmq_getconf, getconf)
+     if ! test "x$libzmq_getconf" = "x"; then
+         zmq_cacheline_size=$($libzmq_getconf LEVEL1_DCACHE_LINESIZE 2>/dev/null || echo 64)
+-        if test "x$zmq_cacheline_size" = "x0" -o  "x$zmq_cacheline_size" = "x-1"; then
++        if test "x$zmq_cacheline_size" = "x0" -o  "x$zmq_cacheline_size" = "x-1" -o "x$zmq_cacheline_size" = "xundefined"; then
+             # getconf on some architectures does not know the size, try to fallback to
+             # the value the kernel knows on Linux
+             zmq_cacheline_size=$(cat /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size 2>/dev/null || echo 64)

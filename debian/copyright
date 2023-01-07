@@ -52,22 +52,6 @@ Copyright: 2014-    , Laszlo Boszormenyi (GCS) <gcs@debian.org>
  2012, Alessandro Ghedini <ghedo@debian.org>
 License: LGPL-2.0+
 
-Files: debian/zmq.hpp
-Copyright:
- 2009-2011, 250bpm s.r.o.
- 2011, Botond Ballo
- 2007-2013, iMatix Corporation
- 2016-2017 ZeroMQ community
-License: MIT
-Comment: The C++ header was downloaded from https://github.com/zeromq/cppzmq
-
-Files: debian/zmq_addon.hpp
-Copyright:
- 2016 VOCA AS / Harald Nøkland
- 2016-2017 ZeroMQ community
-License: MIT
-Comment: The C++ header was downloaded from https://github.com/zeromq/cppzmq
-
 License: LGPL-2.0+
  This package is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
