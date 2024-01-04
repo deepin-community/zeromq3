@@ -2,4 +2,3 @@ disable-test_security_curve.patch
 tests_testutil.cpp.patch
 test_hwm_pubsub-tcp-fix.patch
 fix-maybe-uninitialized.patch
-fix-qemu-user-build.patch

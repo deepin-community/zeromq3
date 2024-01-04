@@ -1,8 +1,23 @@
-zeromq3 (4.3.4.1-deepin1) unstable; urgency=medium
+zeromq3 (4.3.5-1) unstable; urgency=medium
 
-  * fix qemu-user build
+  * New upstream release.
+  * Source is relicensed to the MPL-2.0 License.
+  * Update Standards-Version to 4.6.2 .
 
- -- Han Gao <gaohan@iscas.ac.cn>  Sat, 07 Jan 2023 14:57:02 +0800
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Sat, 14 Oct 2023 15:38:10 +0200
+
+zeromq3 (4.3.4-6) unstable; urgency=medium
+
+  [ Eric Long <i@hack3r.moe> ]
+  * Add upstream patch to fix FTBFS on riscv64 (closes: #1029132).
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Wed, 18 Jan 2023 21:42:24 +0100
+
+zeromq3 (4.3.4-5) unstable; urgency=medium
+
+  * Backport fix for message can't be received due to signal.
+
+ -- Laszlo Boszormenyi (GCS) <gcs@debian.org>  Thu, 12 Jan 2023 17:24:47 +0100
 
 zeromq3 (4.3.4-4) unstable; urgency=medium
 
